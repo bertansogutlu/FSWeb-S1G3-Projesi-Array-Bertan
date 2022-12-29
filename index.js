@@ -29,6 +29,7 @@ const orijinalTatlar = [
   "Vanilya",
 ];
 
+
 /* Görev 1: Diziyi kopyalama!
 Orijinal tatların bulunduğu toplam 25 aromanın olduğu bir dizimiz var (yukarıya bakın). Bu görevde, bu dizi'ye veri yazma ve bu diziden veri okuma işlemleri yapacağız.
 Tüm bu değişiklikleri yaparken, gerçek, orijinal 25 lezzetin listesini kaybetmek istemiyoruz. Bu yüzden orijinal diziyi kopyalamamız gerekmektedir!
@@ -40,9 +41,10 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
-}
+function kopyala(arr){
+  const kopya = arr.slice();
+  return kopya;
+  }
 
 
 /* Görev 2:
@@ -56,8 +58,8 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(dizi){
+  return dizi.length === 25;
 }
 
 
@@ -74,9 +76,10 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
-}
+function cesitEkle(tatlar,tat){
+  tatlar.unshift(tat);
+  return tatlar;
+  }
 
 
 /* Cörev 4:
@@ -92,8 +95,9 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(tatlar){
+  tatlar.pop();
+  return tatlar;
 }
 
 
@@ -108,8 +112,8 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(tatlar,indeks){
+  return tatlar[indeks];
 }
 
 
@@ -128,8 +132,10 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(tatlar,lezzet){
+  let indeks = tatlar.indexOf(lezzet);
+  tatlar.splice(indeks,1);
+  return tatlar;
 }
 
 
@@ -154,8 +160,12 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(tatlar,filtre){
+  let yeniTatlar = []
+  for (let i in tatlar) {
+    if (tatlar[i].includes(filtre)) yeniTatlar.push(tatlar[i]);
+  }
+  return yeniTatlar;
 }
 
 
@@ -172,8 +182,18 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+function ortalamaKelimeSayisi(tatlar){
+  let tatSayac = 0;
+  let harfSayac = 0;
+	let boslukSayac = 0;
+  for (let tat in tatlar){
+	if (tatlar[tat].includes(" ")) boslukSayac++;
+    tatSayac++
+    for (let harf in orijinalTatlar[tat]) {
+      harfSayac++
+    }
+  }
+  return (harfSayac - boslukSayac) / tatSayac;
 }
 
 
@@ -190,9 +210,18 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 */
 
 
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
-}
+function rastgeleTatlar(tatlar1, tatlar2, tatlar3, tatlar4){
+  let butunTatlar = [...tatlar1, ...tatlar2, ...tatlar3, ...tatlar4];
+  let rastgeleTatlar = [];
+  
+  while (rastgeleTatlar.length < 25) {
+  let indeks = Math.floor(Math.random() * butunTatlar.length);
+    if (!(rastgeleTatlar.includes(butunTatlar[indeks]))){
+    rastgeleTatlar.push(butunTatlar[indeks])
+    }
+  }
+  return rastgeleTatlar;
+  }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 // const yeniTatlar = [
