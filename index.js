@@ -184,17 +184,15 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
 
 function ortalamaKelimeSayisi(tatlar){
   let tatSayac = 0;
-  let harfSayac = 0;
-	let boslukSayac = 0;
-  for (let tat in tatlar){
-	if (tatlar[tat].includes(" ")) boslukSayac++;
-    tatSayac++
-    for (let harf in orijinalTatlar[tat]) {
-      harfSayac++
+  let kelimeSayac = 0;
+  for (let i in tatlar){
+	let kelimeDizi = [];
+	kelimeDizi = tatlar[i].split(" ")
+	kelimeSayac += kelimeDizi.length
+	tatSayac++
     }
+	return kelimeSayac / tatSayac;
   }
-  return (harfSayac - boslukSayac) / tatSayac;
-}
 
 
 /* ALIŞTIRMA 2:
